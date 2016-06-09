@@ -1,0 +1,203 @@
+<div class="row b-editor voffset3" shortcut>
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+
+                <div class="btn-group">
+                    <button class="btn btn-default btn-xs" title="Цвет фона" color-picker="setBackgroundColor(color)">
+                        <span class="glyphicon glyphicon-tint" aria-hidden="true"></span>
+                    </button>
+                    <button class="btn btn-default btn-xs" title="Фоновое изображение" upload-image="setBackgroundImage(url)"
+                        upload-image-crop-options="getBackroundImageCropOptions()">
+                        <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+                    </button>
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn btn-default btn-xs" title="Добавить изображение" upload-image="addImage(url, type)">
+                        <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+                    </button>
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn btn-default btn-xs" ng-click="addText('Новый текст')" title="Добавить текст">
+                        <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span>
+                    </button>
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn btn-default btn-xs" ng-click="undo()" ng-disabled="!canUseUndo()" title="Отменить">
+                        <span class="glyphicon glyphicon-backward" aria-hidden="true"></span>
+                    </button>
+                    <button class="btn btn-default btn-xs" ng-click="redo()" ng-disabled="!canUseRedo()" title="Вернуть">
+                        <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                    </button>
+                </div>
+
+                <div class="btn-group btn-group-xs" btn-group-disabled="!hasSelected()">
+                    <button class="btn btn-default btn-xs" ng-click="bringToFront()">
+                        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+                    </button>
+                    <button class="btn btn-default btn-xs" ng-click="sendToBack()">
+                        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                    </button>
+                </div>
+
+                <div class="btn-group btn-group-xs" title="Цвет заливки" ng-show="hasSelected(['i-text', 'path-group'])">
+                    <button class="btn btn-default btn-xs" ng-click="setProp('fill', font.lastFillColor)"
+                            style="width: 22px; background: {{ font.lastFillColor }}">&nbsp;</button>
+                    <button class="btn btn-default btn-xs" color-picker="setFillColor(color)">
+                        <span class="caret"></span>
+                    </button>
+                </div>
+
+                <div class="inline-block" ng-show="hasSelected('i-text')">
+                <span class="form-inline">
+                    <select class="form-control input-xs" bind-value-to="fontFamily">
+                        <option ng-repeat="family in font.families" value="{{ family }}">{{ family }}</option>
+                    </select>
+                </span>
+
+                <span class="form-inline">
+                    <select class="form-control input-xs" bind-value-to="fontSize">
+                        <option ng-repeat="size in font.sizes" value="{{ size }}">{{ size }}</option>
+                    </select>
+                </span>
+
+                    <div class="btn-group btn-group-xs">
+                        <button class="btn btn-default btn-xs" bind-prop="fontWeight" value="bold">
+                            <span class="glyphicon glyphicon-bold" aria-hidden="true"></span>
+                        </button>
+                        <button class="btn btn-default btn-xs" bind-prop="fontStyle" value="italic">
+                            <span class="glyphicon glyphicon-italic" aria-hidden="true"></span>
+                        </button>
+                        <button class="btn btn-default btn-xs" bind-prop="textDecoration" value="underline">
+                            <span style="text-decoration: underline;">U</span>
+                        </button>
+                    </div>
+
+                    <div class="btn-group btn-group-xs">
+                        <button class="btn btn-default btn-xs" bind-prop="textAlign" bind-type="radio" value="left">
+                            <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+                        </button>
+                        <button class="btn btn-default btn-xs" bind-prop="textAlign" bind-type="radio" value="center">
+                            <span class="glyphicon glyphicon-align-center" aria-hidden="true"></span>
+                        </button>
+                        <button class="btn btn-default btn-xs" bind-prop="textAlign" bind-type="radio" value="right">
+                            <span class="glyphicon glyphicon-align-right" aria-hidden="true"></span>
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="voffset1">
+                    <div class="btn-group btn-group-xs" btn-group-disabled="!hasActiveGroup()">
+                        <button class="btn btn-default btn-xs" ng-click="alignGroup('left')" title="Выравнивание по левому краю">
+                            <span class="glyphicon glyphicon-object-align-left"></span>
+                        </button>
+                        <button class="btn btn-default btn-xs" ng-click="alignGroup('vertical')" title="Выравнивание по вертикали">
+                            <span class="glyphicon glyphicon-object-align-vertical"></span>
+                        </button>
+                        <button class="btn btn-default btn-xs" ng-click="alignGroup('right')" title="Выравнивание по правому краю">
+                            <span class="glyphicon glyphicon-object-align-right"></span>
+                        </button>
+                        <button class="btn btn-default btn-xs" ng-click="alignGroup('top')" title="Выравнивание к верху">
+                            <span class="glyphicon glyphicon-object-align-top"></span>
+                        </button>
+                        <button class="btn btn-default btn-xs" ng-click="alignGroup('horizontal')" title="Выравнивание по горизонтали">
+                            <span class="glyphicon glyphicon-object-align-horizontal"></span>
+                        </button>
+                        <button class="btn btn-default btn-xs" ng-click="alignGroup('bottom')" title="Выравнивание к низу">
+                            <span class="glyphicon glyphicon-object-align-bottom"></span>
+                        </button>
+                    </div>
+
+                    <div class="inline-block" btn-group-disabled="!hasSelected()" title="Угол поворота">
+                        <input type="number" class="form-control input-xs input-xs-angle" bind-value-to="angle">
+                    </div>
+
+                    <div class="inline-block" dropdown auto-close="outsideClick">
+                        <span class="input-group input-group-xs input-group-opacity" title="Непрозрачность" btn-group-disabled="!hasSelected()">
+                            <input type="text" class="form-control" readonly bind-value-to="opacity">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" dropdown-toggle>
+                                    <span class="glyphicon glyphicon-menu-down"></span>
+                                </button>
+                            </span>
+                        </span>
+                        <ul class="dropdown-menu dropdown-menu-range pull-right">
+                            <li><input type="range" bind-value-to="opacity" min="0" max="1" step="0.01"></li>
+                        </ul>
+                    </div>
+
+                    <div class="inline-block" dropdown auto-close="outsideClick">
+                        <span class="input-group input-group-xs input-group-opacity" title="Размытие" btn-group-disabled="!hasSelected(['image', 'path-group'])">
+                            <input type="text" class="form-control" readonly bind-value-to="gaussianBlur">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" dropdown-toggle>
+                                    <span class="glyphicon glyphicon-menu-down"></span>
+                                </button>
+                            </span>
+                        </span>
+                        <ul class="dropdown-menu dropdown-menu-range pull-right">
+                            <li><input type="range" bind-value-to="gaussianBlur" events="input" min="0" max="10" step="0.01"></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="panel-body">
+
+                <div class="b-editor-canvas" data-workspace>
+                    <canvas-fabric ng-repeat="canvas in canvases" ng-show="activeCanvasIndex === $index" data-index="{{ $index }}">
+                        <canvas></canvas>
+                    </canvas-fabric>
+                </div>
+
+            </div>
+
+            <div class="panel-footer">
+                <div class="btn-group">
+                    <label class="btn btn-default btn-sm" ng-model="activeCanvasIndex" btn-radio="0">Front Side</label>
+                    <label class="btn btn-default btn-sm" ng-model="activeCanvasIndex" btn-radio="1">Back Side</label>
+                </div>
+
+                <button class="btn btn-primary btn-sm" ng-click="toSVG()">to SVG</button>
+
+                <div class="pull-right" ng-show="hasSelected()">
+                    <button class="btn btn-danger btn-sm" ng-click="removeSelected()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <pre>{{outputSVG}}</pre>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <button type="button" class="btn btn-primary btn-sm btn-block" ng-click="addText('Новый текст')">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Добавить текст
+                </button>
+            </div>
+
+            <div class="panel-body">
+                <div ng-repeat="item in canvases" ng-show="activeCanvasIndex === $index">
+                    <div ng-repeat="text in getObjects('i-text')">
+                        <div class="input-group" ng-class="{voffset2: !$first}">
+                            <textarea class="form-control" bind-value-to="text" ng-focus="setSelected(text)"
+                                ng-model="text.text" rows="1" style="resize: vertical;"></textarea>
+                            <span class="input-group-btn">
+                                <button class="btn btn-danger" ng-click="removeObject(text)" type="button">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

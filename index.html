@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="editor">
+<head lang="ru">
+    <meta charset="UTF-8">
+    <title>Polygraphy Contsructor</title>
+
+    <link rel="stylesheet" type="text/css" href="fonts.php">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-3.3.4/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="css/main.css">
+
+    <script>
+        document.write('<base href="' + document.location + '">');
+    </script>
+    <script src="js/vendor/browser.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Полиграфический конструктор</h1>
+
+        <div ng-view></div>
+    </div>
+
+    <!-- vendor libraries -->
+    <script src="js/vendor/fabric/fabric.min.js"></script>
+    <script src="js/vendor/jquery/jquery.1.11.2-min.js"></script>
+    <script src="js/vendor/jquery/jquery.imgareaselect.pack.js"></script>
+    <script src="js/vendor/lodash.min.js"></script>
+    <script src="js/vendor/angular/angular.min.js"></script>
+    <script src="js/vendor/angular/angular-resource.min.js"></script>
+    <script src="js/vendor/angular/angular-route.min.js"></script>
+    <script src="js/vendor/angular/ui-bootstrap-tpls-0.13.0.min.js"></script>
+    <script src="js/vendor/gaussian-blur/common.js"></script>
+
+    <!-- application scripts -->
+    <script src="js/app/app.js"></script>
+    <script src="js/app/config.js"></script>
+    <script src="js/app/common/index.js"></script>
+
+    <script src="js/app/controllers/EditorController.js"></script>
+
+    <script src="js/app/services/Canvas.js"></script>
+    <script src="js/app/services/CanvasProps.js"></script>
+    <script src="js/app/services/DataService.js"></script>
+    <script src="js/app/services/WorkspaceService.js"></script>
+    <script src="js/app/services/UtilsService.js"></script>
+
+    <script src="js/app/directives/btn-group-disabled.js"></script>
+    <script src="js/app/directives/ColorPickerDirective.js"></script>
+    <script src="js/app/directives/FileReaderDirective.js"></script>
+    <script src="js/app/directives/ShortcutDirective.js"></script>
+    <script src="js/app/directives/TextDirective.js"></script>
+    <script src="js/app/directives/WorkspaceDirective.js"></script>
+
+    <script src="js/app/common/upload-image/controller.js"></script>
+    <script src="js/app/common/upload-image/directives.js"></script>
+
+</body>
+</html>

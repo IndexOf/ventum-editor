@@ -1,0 +1,14 @@
+<div class="modal-header">
+    <button class="close" ng-click="cancel()">&times;</button>
+    <h4 class="modal-title">Добавить изображение</h4>
+</div>
+
+<div class="modal-body">
+    <input type="file" file-reader="onLoad(url, file)" ng-if="!previewUrl">
+    <img ng-src="{{ previewUrl }}" upload-image-preview>
+</div>
+
+<div class="modal-footer" ng-show="previewUrl">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Отмена</button>
+</div>

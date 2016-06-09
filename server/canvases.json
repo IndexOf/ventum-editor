@@ -1,0 +1,20 @@
+{
+  "config": {
+    "imageMaxResolution": {
+      "width": 1000,
+      "height": 600
+    }
+  },
+  "result": [
+    {
+      "data": {
+        "backgroundColor": "#fff"
+      }
+    },
+    {
+      "data": {
+        "backgroundColor": "#eee"
+      }
+    }
+  ]
+}

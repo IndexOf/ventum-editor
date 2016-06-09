@@ -1,0 +1,89 @@
+html, body {
+    margin: 0;
+}
+
+.b-editor {
+    position: relative;
+    }
+
+    .b-editor-canvas {
+        overflow: auto;
+        }
+
+[class*="col-"] {
+    /*border: 1px solid rgba(86,61,124,.2);*/
+    }
+
+
+
+/* Twitter Bootstrap extended  */
+.voffset  { margin-top: 2px; }
+.voffset1 { margin-top: 5px; }
+.voffset2 { margin-top: 10px; }
+.voffset3 { margin-top: 15px; }
+.voffset4 { margin-top: 30px; }
+.voffset5 { margin-top: 40px; }
+.voffset6 { margin-top: 60px; }
+.voffset7 { margin-top: 80px; }
+.voffset8 { margin-top: 100px; }
+.voffset9 { margin-top: 150px; }
+
+.inline-block {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.input-xs {
+    height: 22px;
+    padding: 1px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+
+.input-group-xs>.form-control,
+.input-group-xs>.input-group-addon,
+.input-group-xs>.input-group-btn>.btn {
+    height: 22px;
+    padding: 1px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.input-group-opacity {
+    width: 59px;
+}
+
+input[type="number"].form-control {
+    padding-right: 0;
+}
+
+.input-xs-angle {
+    width: 48px;
+}
+
+.input-group textarea.form-control {
+    height: 34px;
+}
+
+.btn-file input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    outline: none;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-upload img{
+    max-width: 100%;
+}
+
+.dropdown-menu-range {
+    padding: 8px;
+}

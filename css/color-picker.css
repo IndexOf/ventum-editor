@@ -1,0 +1,20 @@
+.color-picker {
+    position: absolute;
+    z-index: 100;
+    background: #fff;
+    border: 1px solid #000;
+    padding: 1px;
+}
+.color-picker .list {
+    font-size: 0;
+    line-height: 0;
+}
+.color-picker .item {
+    vertical-align: top;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #000;
+    margin: 1px;
+    cursor: pointer;
+}
